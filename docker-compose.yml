@@ -1,0 +1,29 @@
+shopware-nginx:
+    image: nginx:latest
+    ports:
+        - "8080:8080"
+    volumes:
+        - ./shopware:/shopware
+        - ./nginx-site-shopware.conf:/etc/nginx/nginx.conf
+    links:
+        - shopware-php
+
+shopware-php:
+    image: php7.4-shopware:latest
+    volumes:
+        - ./shopware:/shopware
+    extra_hosts:
+        - "localhost:172.17.0.1"
+
+shopware-mysql:
+     image: mysql:5.7
+     volumes:
+       - ./mysql-db:/var/lib/mysql
+     restart: always
+     ports:
+      - '3306:3306'
+     environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: shopware
+       MYSQL_USER: shopware
+       MYSQL_PASSWORD: shopware
