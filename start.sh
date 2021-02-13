@@ -81,6 +81,9 @@ else
     execute_echo mkdir "$shopware_dir"
     execute_echo unzip -d "$shopware_dir" "$shopware_zip"
 
+    # Necessary for some Shopware temp files
+    execute_echo chmod 777 "$shopware_dir"
+
     execute_echo rm "$shopware_zip"
 fi
 
