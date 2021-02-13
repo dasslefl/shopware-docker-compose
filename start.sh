@@ -83,7 +83,7 @@ else
 
     # Necessary for some Shopware temp files
     execute_echo chmod 777 "$shopware_dir"
-    find "$shopware_dir" -type d -print0 | xargs -0 chmod 755
+    find "$shopware_dir" -type d -print0 | xargs -0 chmod 777
 
     execute_echo rm "$shopware_zip"
 fi
