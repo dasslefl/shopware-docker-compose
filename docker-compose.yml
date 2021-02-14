@@ -16,6 +16,8 @@ shopware-php:
         - "localhost:172.17.0.1"
     links:
         - shopware-mysql
+    environment:
+        - "TRUSTED_PROXIES=REMOTE_ADDR"
 
 shopware-mysql:
      image: mysql:5.7
